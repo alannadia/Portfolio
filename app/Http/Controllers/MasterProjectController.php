@@ -13,6 +13,12 @@ class MasterProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+      $this->middleware('auth');
+      $this->middleware('admin')->except('index','show'); 
+    }
     public function index()
     {
         $data = Siswa::all('id','nama');
@@ -128,7 +134,7 @@ class MasterProjectController extends Controller
     
             //1.Hapus Foto Lama 
             $projek=Projek::find($id);
-            file::delete('./template/img/Projek/'.$siswa->foto);
+            file::delete('./template/img/Projek/'.$projek->foto);
     
             //2.ambil informasi file yang diupload
             $file = $request->file('foto');

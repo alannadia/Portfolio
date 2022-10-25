@@ -29,16 +29,16 @@ Route::get('/', function () {
 
 
 
-Route ::get('admin/dashboard',[DashboardController::class,'index'])->middleware('auth');
+Route ::get('admin/dashboard',[DashboardController::class,'index']);
 Route ::get('/login',[LoginController::class,'index'])->name('login.auth')->middleware('guest');
 Route ::post('/login',[LoginController::class, 'authenticate'])->name('login');
 Route ::post('/logout',[LoginController::class,'index'])->name('logout')->middleware('auth');
-Route ::get('admin/MasterSiswa/{id_siswa}/hapus',[MasterSiswaController::class,'hapus'])->name('MasterSiswa.hapus')->middleware('auth','admin');
-Route::resource('admin/MasterSiswa',MasterSiswaController::class)->middleware('auth');
-Route::resource('/admin/MasterProject',MasterProjectController::class)->middleware('auth');
+Route ::get('admin/MasterSiswa/{id_siswa}/hapus',[MasterSiswaController::class,'hapus'])->name('MasterSiswa.hapus');
+Route::resource('admin/MasterSiswa',MasterSiswaController::class);
+Route::resource('/admin/MasterProject',MasterProjectController::class);
 Route ::get('admin/MasterProject/{id_project}/hapus',[MasterProjectController::class,'hapus'])->name('MasterProject.hapus');
-Route::resource('admin/MasterContact',MasterKontakController::class)->middleware('auth');
-Route::get('/logout',[LoginController::class,'index'])->middleware('auth');
+Route::resource('admin/MasterContact',MasterKontakController::class);
+// Route::get('/logout',[LoginController::class,'index'])->middleware('auth');
 
 // Route::get('/mastersiswa', function () {
 //     return view('admin.MasterSiswa');
