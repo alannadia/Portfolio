@@ -2,8 +2,9 @@
 @section('title','home')
 @section('content')
 <!-- Jumbotron -->
+<div>
 <section class="jumbotron text-center">
-      <img src="img/jumbotron.jpg " style="margin: top 200px; ;" alt="Alan Nadia" width="200" class="rounded-circle img-thumbnail" />
+      <img src="img/jumbotron.jpg " alt="Alan Nadia" width="200" class="rounded-circle img-thumbnail" />
       <h1 class="display-4">Alan Nadia</h1>
       <p class="lead">Student</p>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -14,5 +15,6 @@
         ></path>
       </svg>
     </section>
+</div>
     <!-- Akhir Jumbotron -->
     @endsection
