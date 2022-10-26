@@ -20,6 +20,6 @@ class WaliKelas
             return $next($request);   
         }
 
-        return redirect("/admin/dashboard");
+        return back();
     }
 }
