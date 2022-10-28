@@ -2,7 +2,7 @@
 @section('title','Master Siswa')
 @section('content-title','Master Siswa')
 @section('content')
-<a class="btn btn-success " href="{{ route ('MasterSiswa.create')}}">Tambah Data</a>
+<a class="btn btn-primary " href="{{ route ('MasterSiswa.create')}}">Tambah Data</a>
 <div class="row">
     <div class="col-lg-12">
     <div class="card shadow mb-4 mt-3">

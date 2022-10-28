@@ -8,8 +8,8 @@ use App\Models\Kontak;
 class JenisKontak extends Model
 {
     use HasFactory;
-    protected $fillabe =[
-        'deskrpsi'
+    protected $fillable =[
+        'jenis_kontak'
     ];
     
     protected $table ='jenis_kontak';

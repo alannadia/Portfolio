@@ -8,7 +8,7 @@
       <div class="fw-bold" style="font-weight:bold ;">{{ $item->nama_projek }}</div>
       {{ $item->deskripsi }}
     </div>
-    <span class="badge bg-success rounded-pill" style="color:beige">{{ $item->tanggal }}</span>
+    <span class="badge bg-primary rounded-pill" style="color:beige">{{ $item->tanggal }}</span>
   </li>
 </ol>  
 <div class="card-footer">

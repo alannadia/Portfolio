@@ -9,7 +9,7 @@ use App\Models\JenisKontak;
 class Kontak extends Model
 {
     use HasFactory;
-    protected $fillabe = [
+    protected $fillable = [
      'siswa_id',
      'jenis_id',
      'deskripsi',
@@ -19,7 +19,7 @@ class Kontak extends Model
     protected $table = 'kontak';
 
     public function siswa(){
-        return$this->belongsTo(Siswa::class,'id_siswa','id');
+        return$this->belongsTo(Siswa::class,'siswa_id','id');
     }
     public function jenis(){
         return$this->belongsTo(JenisKontak::class,'jenis_id','id');

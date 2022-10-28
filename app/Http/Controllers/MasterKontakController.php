@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Kontak;
+use App\Models\JenisKontak;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class MasterKontakController extends Controller
@@ -13,7 +15,8 @@ class MasterKontakController extends Controller
      */
     public function index()
     {
-        return view('admin/MasterContact');
+        $data = Siswa::all('id','nama');
+        return view('admin/MasterContact',compact('data'));
     }
 
     /**
@@ -21,9 +24,12 @@ class MasterKontakController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create( Request $request)
     {
-        return view('admin/TambahKontak');
+        $owner_id = $request->query('siswa');
+        $siswa = Siswa::find($owner_id);
+        $jenis_kontak = JenisKontak::all();
+        return view('admin/TambahKontak',compact('siswa','jenis_kontak'));
     }
 
     /**
@@ -34,7 +40,21 @@ class MasterKontakController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $messages=[
+        //     'required' =>':attribute harus diisi',
+        // ];
+        // $this->validate($request,[
+        //     'siswa_id' => 'required',
+        //     'jenis_kontak' => 'required',
+        //     'deskripsi'  => 'required',
+        // ],$messages);
+        
+        Kontak::create([
+                'siswa_id'=> $request->siswa_id,
+                'jenis_id' => $request->jenis_kontak,
+                'deskripsi' => $request->deskripsi
+        ]);
+        return redirect()->route('MasterContact.index');
     }
 
     /**
@@ -45,7 +65,10 @@ class MasterKontakController extends Controller
      */
     public function show($id)
     {
-        return view('admin/TampilKontak');
+        $data = Siswa::find($id);
+        $kontak = $data->kontak;
+        // dd($kontak);
+        return view('admin.ShowKontak',compact('data','kontak'));
     }
 
     /**
@@ -56,7 +79,11 @@ class MasterKontakController extends Controller
      */
     public function edit($id)
     {
-        return view('admin/EditKontak');
+        {
+            $data = Kontak::find($id);
+            $siswa = Siswa::find($data->id_siswa);
+            return view('admin/EditKontak',compact('data','siswa'));
+        }
     }
 
     /**
@@ -81,4 +108,5 @@ class MasterKontakController extends Controller
     {
         //
     }
+
 }
