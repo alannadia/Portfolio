@@ -43,4 +43,5 @@
         <input type="submit" class="btn btn-success" value="Simpan">
         <a href="{{ route('MasterContact.index') }}" class="btn btn-danger">Batal</a>
     </div>
+</form>
 @endsection
