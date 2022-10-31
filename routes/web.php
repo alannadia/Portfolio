@@ -36,6 +36,7 @@ Route::resource('admin/MasterSiswa',MasterSiswaController::class);
 Route::resource('/admin/MasterProject',MasterProjectController::class);
 Route ::get('admin/MasterProject/{id_project}/hapus',[MasterProjectController::class,'hapus'])->name('MasterProject.hapus');
 Route::resource('admin/MasterContact',MasterKontakController::class);
+Route ::get('admin/MasterContact/{id_contact}/hapus',[MasterKontakController::class,'hapus'])->name('MasterKontak.hapus');
 Route::get('/logout',[LoginController::class,'index'])->middleware('auth');
 
 // Route::get('/mastersiswa', function () {

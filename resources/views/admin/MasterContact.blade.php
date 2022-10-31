@@ -20,7 +20,7 @@
             <tr>
                 <td>{{ $item->nama }}</td>
                 <td class="text-center">
-                <a  onclick="show('{{ $item->id }}')" class="btn btn-sm btn-primary "><i class="fas fa-folder-open"></i></a>
+                <a  onclick="show('{{ $item->id }}')" class="btn btn-sm btn-primary "><i class="fas fa-phone"></i></a>
             <a href="{{ route ('MasterContact.create')}}?siswa={{ $item->id }}" class="btn btn-sm btn-success"><i class="fas fa-plus"></i></a>
                 </td>
             </tr>

@@ -34,11 +34,10 @@
             @endforeach
           </select>
     </div>
-        <div class="form-group">
+    <div class="form-group">
         <label for="deskripsi">Deskripsi</label>
         <input class="form-control pt-5 pb-5" id="deskripsi" name="deskripsi" value="{{old('deskripsi')}}">
     </div>
-  </div>
     <div class="form-group">
         <input type="submit" class="btn btn-success" value="Simpan">
         <a href="{{ route('MasterContact.index') }}" class="btn btn-danger">Batal</a>

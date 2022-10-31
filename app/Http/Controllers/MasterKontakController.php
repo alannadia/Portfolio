@@ -40,14 +40,14 @@ class MasterKontakController extends Controller
      */
     public function store(Request $request)
     {
-        // $messages=[
-        //     'required' =>':attribute harus diisi',
-        // ];
-        // $this->validate($request,[
-        //     'siswa_id' => 'required',
-        //     'jenis_kontak' => 'required',
-        //     'deskripsi'  => 'required',
-        // ],$messages);
+        $messages=[
+            'required' =>':attribute harus diisi',
+        ];
+        $this->validate($request,[
+            'siswa_id' => 'required',
+            'jenis_kontak' => 'required',
+            'deskripsi'  => 'required',
+        ],$messages);
         
         Kontak::create([
                 'siswa_id'=> $request->siswa_id,
@@ -81,8 +81,9 @@ class MasterKontakController extends Controller
     {
         {
             $data = Kontak::find($id);
-            $siswa = Siswa::find($data->id_siswa);
-            return view('admin/EditKontak',compact('data','siswa'));
+            $siswa = Siswa::find($data->siswa_id);
+            $jenis_kontak = JenisKontak::all();
+            return view('admin/EditKontak',compact('data','siswa','jenis_kontak'));
         }
     }
 
@@ -95,7 +96,23 @@ class MasterKontakController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $messages=[
+            'required' =>':attribute harus diisi',
+        ];
+        $this->validate($request,[
+            'siswa_id' => 'required',
+            'jenis_kontak' => 'required',
+            'deskripsi'  => 'required',
+        ],$messages);
+
+        $kontak = Kontak::find($id);
+        
+
+        $kontak->siswa_id = $request->siswa_id; 
+        $kontak->jenis_id = $request->jenis_kontak;
+        $kontak->deskripsi = $request->deskripsi;
+        $kontak->save();
+        return redirect ('/admin/MasterContact');
     }
 
     /**
@@ -107,6 +124,12 @@ class MasterKontakController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function hapus($id){
+        $data = Kontak ::find($id);
+        $data->delete();
+        return redirect()->route('MasterContact.index');
     }
 
 }
